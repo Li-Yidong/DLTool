@@ -1,0 +1,10 @@
+onnx
+onnxruntime
+matplotlib
+pillow
+torch-pruning
+torchcam
+python-dotenv
+PyQt6
+tqdm
+opencv-python

@@ -1,0 +1,1896 @@
+{
+    "mode": {
+        "pyqt": {
+            "name": [
+                "Mode",
+                "モード"
+            ],
+            "comment": [
+                "Mode of running the program",
+                "実行モードである"
+            ],
+            "type": "Dict"
+        },
+        "train": {
+            "pyqt": {
+                "name": [
+                    "Train",
+                    "トレーニング"
+                ],
+                "comment": [
+                    "Run the program in training mode",
+                    "トレーニングで実行する"
+                ],
+                "type": "Boolean",
+                "default": true
+            }
+        },
+        "test": {
+            "pyqt": {
+                "name": [
+                    "Test",
+                    "テスト"
+                ],
+                "comment": [
+                    "Run the program in testing mode",
+                    "テストで実行する"
+                ],
+                "type": "Boolean",
+                "default": false
+            }
+        },
+        "pruning": {
+            "pyqt": {
+                "name": [
+                    "Pruning Mode",
+                    "プルーニング"
+                ],
+                "comment": [
+                    "Run the program in pruning mode",
+                    "プルーニングで実行する"
+                ],
+                "type": "Boolean",
+                "default": false
+            }
+        },
+        "heatmap": {
+            "pyqt": {
+                "name": [
+                    "Heatmap Viewer",
+                    "ヒートマップ"
+                ],
+                "comment": [
+                    "Run the program in heatmap mode",
+                    "ヒートマップで実行する"
+                ],
+                "type": "Boolean",
+                "default": false
+            }
+        },
+        "export": {
+            "pyqt": {
+                "name": [
+                    "Export",
+                    "エクスポート"
+                ],
+                "comment": [
+                    "Run the program in export mode",
+                    "エクスポートで実行する"
+                ],
+                "type": "Boolean",
+                "default": false
+            }
+        }
+    },
+    "train_config": {
+        "pyqt": {
+            "name": [
+                "Train Configuration",
+                "トレーニング設定"
+            ],
+            "comment": [
+                "Configuration for the training section",
+                "トレーニングに関する各設定"
+            ],
+            "type": "Dict"
+        },
+        "device": {
+            "pyqt": {
+                "name": [
+                    "Device for training",
+                    "トレーニングデバイス"
+                ],
+                "comment": [
+                    "Set which device to do process",
+                    "使うデバイス"
+                ],
+                "type": "Dropdown",
+                "default": "cuda:0",
+                "choices": [
+                    "cuda:0",
+                    "cpu"
+                ]
+            }
+        },
+        "graph_mode": {
+            "pyqt": {
+                "name": [
+                    "Graph Mode",
+                    "グラフモード"
+                ],
+                "comment": [
+                    "Device graph mode",
+                    "グラフモード1: トレニンーグロスのグラフを表示する"
+                ],
+                "type": "Boolean",
+                "default": true
+            }
+        },
+        "save_config": {
+            "pyqt": {
+                "name": [
+                    "Save Configuration",
+                    "保存設定"
+                ],
+                "comment": [
+                    "Configuration for saving",
+                    "保存に関する各種設定"
+                ],
+                "type": "Dict"
+            },
+            "save_per_epoch": {
+                "pyqt": {
+                    "name": [
+                        "Save Per Epoch",
+                        "Save Per Epoch"
+                    ],
+                    "comment": [
+                        "Checked: Model will be saved after each epoch\nUnchecked: Only save the model of last epoch",
+                        "チェックするとモデルが`1epoch`ずつ保存される. チェックしないと最後の`epoch`のモデルだけ保存される."
+                    ],
+                    "type": "Boolean",
+                    "default": true
+                }
+            },
+            "save_path": {
+                "pyqt": {
+                    "name": [
+                        "Save Path",
+                        "保存場所"
+                    ],
+                    "comment": [
+                        "Location of saving the model",
+                        "モデルの保存場所である"
+                    ],
+                    "type": "Path",
+                    "target": "Folder",
+                    "default": "Output/checkpoints/"
+                }
+            },
+            "save_name": {
+                "pyqt": {
+                    "name": [
+                        "Save Name",
+                        "モデルネーム"
+                    ],
+                    "comment": [
+                        "Saving name of the model",
+                        "モデルの保存ネームである."
+                    ],
+                    "type": "StrInput",
+                    "default": "test"
+                }
+            }
+        },
+        "dataset_config": {
+            "pyqt": {
+                "name": [
+                    "Dataset Configuration",
+                    "データセット設定"
+                ],
+                "comment": [
+                    "Configuration for datasets in the training section",
+                    "トレーニングモードで使う各種設定"
+                ],
+                "type": "Dict"
+            },
+            "train_data_config": {
+                "pyqt": {
+                    "name": [
+                        "Train Data Configuration",
+                        "トレーニングデータ設定"
+                    ],
+                    "comment": [
+                        "Configuration for train set",
+                        "トレーニングデータセットに関する各種設定"
+                    ],
+                    "type": "Dict"
+                },
+                "data": {
+                    "pyqt": {
+                        "name": [
+                            "Data Location",
+                            "教師データパス"
+                        ],
+                        "comment": [
+                            "Location of your train dataset",
+                            "教師データが保存されている場所"
+                        ],
+                        "type": "Path",
+                        "target": "Folder",
+                        "default": "datasets/Assy_CNN_2classes/train"
+                    }
+                },
+                "batch_size": {
+                    "pyqt": {
+                        "name": [
+                            "Batch Size",
+                            "Batch Size"
+                        ],
+                        "comment": [
+                            "Batch size for training",
+                            "一回でデータから取る画像数, GPUのメモリーによる変換する. 数字が大きくなると学習スピードも速くなる"
+                        ],
+                        "type": "IntInput",
+                        "default": 32
+                    }
+                },
+                "shuffle": {
+                    "pyqt": {
+                        "name": [
+                            "Shuffle",
+                            "Shuffle"
+                        ],
+                        "comment": [
+                            "Checked: Images taken randomly",
+                            "チェックするとランダムでデータセットからデータを取る．チェックしないと順番で取"
+                        ],
+                        "type": "Boolean",
+                        "default": true
+                    }
+                },
+                "Resize": {
+                    "pyqt": {
+                        "name": [
+                            "Resize Input",
+                            "インプットサイズ"
+                        ],
+                        "comment": [
+                            "Resize the images to the specified size",
+                            "画像を指定されたサイズでResizeする"
+                        ],
+                        "type": "SizeInput",
+                        "default": [
+                            224,
+                            224
+                        ]
+                    }
+                },
+                "RandomRotation": {
+                    "pyqt": {
+                        "name": [
+                            "Random Rotation",
+                            "ランダム回転"
+                        ],
+                        "comment": [
+                            "Randomly rotate the captured image by x degrees",
+                            "取られた画像をランダムに`5`度でRotateする"
+                        ],
+                        "type": "IntInput",
+                        "default": 5
+                    }
+                },
+                "ColorJitter": {
+                    "pyqt": {
+                        "name": [
+                            "Color Jitter",
+                            "Color Jitter"
+                        ],
+                        "comment": [
+                            "Color Jitter configuration",
+                            "Color Jitterに関する各種設定"
+                        ],
+                        "type": "Dict"
+                    },
+                    "brightness": {
+                        "pyqt": {
+                            "name": [
+                                "Brightness",
+                                "輝度調整"
+                            ],
+                            "comment": [
+                                "Randomly converts the taken image to (100 +- (x * 100))% brightness of the original image",
+                                "画像の明るさをランダムに元画像の1 +- 50%に変化する(50% ~ 150%)"
+                            ],
+                            "type": "FltInput",
+                            "default": 0.5
+                        }
+                    },
+                    "hue": {
+                        "pyqt": {
+                            "name": [
+                                "Hue",
+                                "色相調整"
+                            ],
+                            "comment": [
+                                "Randomly converts the taken image to (100 +- (x * 100))% hue of the original image",
+                                "画像の色相をランダムに元画像の1 +- 30%に変化する(70% ~ 130%)"
+                            ],
+                            "type": "FltInput",
+                            "default": 0.3
+                        }
+                    }
+                },
+                "RandomInvert": {
+                    "pyqt": {
+                        "name": [
+                            "Random Invert",
+                            "ランダム逆変換"
+                        ],
+                        "comment": [
+                            "Randomly invert the color of the image",
+                            "チェックする: 画像をランダムにカラーリバーサルする"
+                        ],
+                        "type": "Boolean",
+                        "default": true
+                    }
+                },
+                "RandomHorizontalFlip": {
+                    "pyqt": {
+                        "name": [
+                            "Random Horizontal Flip",
+                            "ランダム横方向フリップ"
+                        ],
+                        "comment": [
+                            "Randomly flip the image horizontally",
+                            "画像をランダムに左右フリップする"
+                        ],
+                        "type": "Boolean",
+                        "default": true
+                    }
+                },
+                "RandomVerticalFlip": {
+                    "pyqt": {
+                        "name": [
+                            "Random Vertical Flip",
+                            "ランダム縦方向フリップ"
+                        ],
+                        "comment": [
+                            "Randomly flip the image vertically",
+                            "チェックする: 画像をランダムに上下フリップす"
+                        ],
+                        "type": "Boolean",
+                        "default": true
+                    }
+                }
+            },
+            "val_data_config": {
+                "pyqt": {
+                    "name": [
+                        "Validation Data Configuration",
+                        "バリデーションデータ設定"
+                    ],
+                    "comment": [
+                        "Configuration for validation set",
+                        "バリデーションデータセットに関する各種設定"
+                    ],
+                    "type": "Dict"
+                },
+                "data": {
+                    "pyqt": {
+                        "name": [
+                            "Data Location",
+                            "バリデーションデータセットパス"
+                        ],
+                        "comment": [
+                            "Location of the Validation Data",
+                            "バリデーションデータが保存されている場所"
+                        ],
+                        "type": "Path",
+                        "target": "Folder",
+                        "default": "datasets/Assy_CNN_2classes/val"
+                    }
+                },
+                "batch_size": {
+                    "pyqt": {
+                        "name": [
+                            "Batch Size",
+                            "Batch Size"
+                        ],
+                        "comment": [
+                            "Batch size for validating",
+                            "一回でデータから取る画像数, GPUのメモリーによる変換する. 数字が大きくなると学習スピードも速くなる"
+                        ],
+                        "type": "IntInput",
+                        "default": 32
+                    }
+                },
+                "shuffle": {
+                    "pyqt": {
+                        "name": [
+                            "Shuffle",
+                            "Shuffle"
+                        ],
+                        "comment": [
+                            "Checked: Validation image taken randomly",
+                            "チェックするとランダムでデータセットからデータを取る．チェックしないと順番で取"
+                        ],
+                        "type": "Boolean",
+                        "default": false
+                    }
+                }
+            }
+        },
+        "model_config": {
+            "pyqt": {
+                "name": [
+                    "Model Configuration",
+                    "モデル設定"
+                ],
+                "comment": [
+                    "Configurations for the model used",
+                    "モデルに関する各種設定"
+                ],
+                "type": "Dict"
+            },
+            "model": {
+                "pyqt": {
+                    "name": [
+                        "Model Architecture",
+                        "モデル構造"
+                    ],
+                    "comment": [
+                        "Chosen model from available modules",
+                        "本パッケージのモジュールが全部 Pytorch で提供された"
+                    ],
+                    "type": "Dropdown",
+                    "choices": [
+                        "vgg16",
+                        "vgg19",
+                        "resnet18",
+                        "resnet34",
+                        "resnet50",
+                        "resnet101",
+                        "resnet152",
+                        "efficientnet_b0",
+                        "efficientnet_b1",
+                        "efficientnet_b2",
+                        "efficientnet_b3",
+                        "efficientnet_b4",
+                        "efficientnet_b5",
+                        "efficientnet_b6",
+                        "efficientnet_b7"
+                    ],
+                    "default": "resnet18"
+                }
+            },
+            "classes_num": {
+                "pyqt": {
+                    "name": [
+                        "Number of Classes",
+                        "クラス数"
+                    ],
+                    "comment": [
+                        "Number of classes must be the same with train data",
+                        "教師データのクラス数が同じすべき"
+                    ],
+                    "type": "IntInput",
+                    "default": 2
+                }
+            },
+            "use_official_model": {
+                "pyqt": {
+                    "name": [
+                        "Use Official Model",
+                        "オフィシャルモデルを使う？"
+                    ],
+                    "comment": [
+                        "Checked: Use the pretrained model provided by PyTorch",
+                        "チェックする: Pytorch が提供するモデルを使用する"
+                    ],
+                    "type": "Boolean",
+                    "default": true
+                }
+            },
+            "pretrained": {
+                "pyqt": {
+                    "name": [
+                        "Pretrained Model",
+                        "事前学習済みモデル"
+                    ],
+                    "comment": [
+                        "Checked: Use the pretrained model trained by ourselves",
+                        "チェックする: 自分の転移学習用のモデルを使用する"
+                    ],
+                    "type": "Boolean",
+                    "default": false
+                }
+            },
+            "pretrained_model": {
+                "pyqt": {
+                    "name": [
+                        "Pretrained Model Path",
+                        "事前学習済みモデルのパス"
+                    ],
+                    "comment": [
+                        "If using pretrained model, add the path to the model",
+                        "自分の転移学習用のモデルを使用する場合，モデルパスを渡さないといけない"
+                    ],
+                    "type": "Path",
+                    "target": "File",
+                    "default": ""
+                }
+            },
+            "old_version": {
+                "pyqt": {
+                    "name": [
+                        "Old Version?",
+                        "Old Version?"
+                    ],
+                    "comment": [
+                        "Whether to use old version of model (ImageNet pretrained model as-is)",
+                        "古いバージョンのモデルを使うかどうか (ImageNetの学習済みモデルをそのまま使う)"
+                    ],
+                    "type": "Boolean",
+                    "default": false
+                }
+            }
+        },
+        "Hyperparams_config": {
+            "pyqt": {
+                "name": [
+                    "Hyperparameters Configuration",
+                    "Hyperparameters Configuration"
+                ],
+                "comment": [
+                    "Configurations used for hyperparameters",
+                    "Configurations used for hyperparameters"
+                ],
+                "type": "Dict"
+            },
+            "epochs": {
+                "pyqt": {
+                    "name": [
+                        "Epochs",
+                        "Epochs"
+                    ],
+                    "comment": [
+                        "Iterations of training",
+                        "学習回数"
+                    ],
+                    "type": "IntInput",
+                    "default": 300
+                }
+            },
+            "criterion": {
+                "pyqt": {
+                    "name": [
+                        "Criterion",
+                        "Criterion"
+                    ],
+                    "comment": [
+                        "Loss Function to use for training model",
+                        "損失関数"
+                    ],
+                    "type": "Dropdown",
+                    "choices": [
+                        "CrossEntropyLoss",
+                        "BCEWithLogitsLoss",
+                        "BCELoss",
+                        "NLLLoss"
+                    ],
+                    "default": "CrossEntropyLoss"
+                }
+            },
+            "optimizer": {
+                "pyqt": {
+                    "name": [
+                        "Optimizer",
+                        "Optimizer"
+                    ],
+                    "comment": [
+                        "Optimizer used to reduce loss of training and model feedback",
+                        "学習損失を抑えるために，フィードバック最適化手法である"
+                    ],
+                    "type": "Dropdown",
+                    "choices": [
+                        "SGD",
+                        "Adam",
+                        "AdamW",
+                        "RMSprop",
+                        "Adagrad"
+                    ],
+                    "default": "SGD"
+                }
+            },
+            "learning_rate": {
+                "pyqt": {
+                    "name": [
+                        "Learning Rate",
+                        "Learning Rate"
+                    ],
+                    "comment": [
+                        "Determines how small or large the update applied to the model's parameters. Smaller learning rates result in finer updates, while larger learning rates lead to more significant updates",
+                        "学習間隔である. 小さくなるほど学習が細かくなる"
+                    ],
+                    "type": "FltInput",
+                    "default": 0.01
+                }
+            },
+            "momentum": {
+                "pyqt": {
+                    "name": [
+                        "SGD Momentum",
+                        "SGD Momentum"
+                    ],
+                    "comment": [
+                        "SGD Specific parameter. Momentum optimizes the parameters as if a ball rolling on the function's surface",
+                        "SGD 専用パラメータ: 関数平面上をボールが転がるように最適化されます"
+                    ],
+                    "type": "FltInput",
+                    "default": 0.9
+                }
+            },
+            "target": {
+                "pyqt": {
+                    "name": [
+                        "Target Class",
+                        "注目クラス"
+                    ],
+                    "comment": [
+                        "Index of the class of interest. Recall and Precision will be calculated based on this index",
+                        "注目したいクラスのインデックス. そのインデックスによるRecallとPrecisionを計算する"
+                    ],
+                    "type": "IntInput",
+                    "default": 0
+                }
+            }
+        }
+    },
+    "test_config": {
+        "pyqt": {
+            "name": [
+                "Test Configuration",
+                "テスト設定"
+            ],
+            "comment": [
+                "Configuration for the testing section",
+                "テストに関する各種設定"
+            ],
+            "type": "Dict"
+        },
+        "test_mode": {
+            "pyqt": {
+                "name": [
+                    "Test Mode",
+                    "テストモード"
+                ],
+                "comment": [
+                    "Testing .pt Model and/or .onnx model",
+                    ".ptモデルか.onnxモデルをテストする"
+                ],
+                "type": "Dict"
+            },
+            "pt_model_test": {
+                "pyqt": {
+                    "name": [
+                        "Test .pt Model",
+                        "Test .pt Model"
+                    ],
+                    "comment": [
+                        "Whether to test .pt model",
+                        "チェックする: テストしたいモデルは .pt モデル"
+                    ],
+                    "type": "Boolean",
+                    "default": true
+                }
+            },
+            "onnx_model_test": {
+                "pyqt": {
+                    "name": [
+                        "Test .onnx Model",
+                        "Test .onnx Model"
+                    ],
+                    "comment": [
+                        "Whether to test .onnx model",
+                        "チェックする: テストしたいモデルは .onnx モデル"
+                    ],
+                    "type": "Boolean",
+                    "default": false
+                }
+            }
+        },
+        "dataset_config": {
+            "pyqt": {
+                "name": [
+                    "Dataset Configuration",
+                    "データセット設定"
+                ],
+                "comment": [
+                    "Dataset configuration for testing",
+                    "テストグデータセットに関する各種設定"
+                ],
+                "type": "Dict"
+            },
+            "data": {
+                "pyqt": {
+                    "name": [
+                        "Data Location",
+                        "テストデータセットパス"
+                    ],
+                    "comment": [
+                        "Location of the test dataset",
+                        "テストデータセットパス"
+                    ],
+                    "type": "Path",
+                    "target": "Folder",
+                    "default": "datasets/Assy_CNN_2classes/val"
+                }
+            },
+            "batch_size": {
+                "pyqt": {
+                    "name": [
+                        "Batch Size",
+                        "Batch Size"
+                    ],
+                    "comment": [
+                        "For .pt models, adjust the value by RAM and GPU\nFor .onnx models, ensure this value is the same as the input size of the model",
+                        ".pt モデル: GPUかRAMで変化していい; .onnx モデル：'input_size'に対応してください."
+                    ],
+                    "type": "IntInput",
+                    "default": 1
+                }
+            },
+            "shuffle": {
+                "pyqt": {
+                    "name": [
+                        "Shuffle",
+                        "Shuffle"
+                    ],
+                    "comment": [
+                        "Checked: Images taken randomly",
+                        "チェックするとランダムでデータセットからデータを取る．チェックしないと順番で取"
+                    ],
+                    "type": "Boolean",
+                    "default": false
+                }
+            },
+            "Resize": {
+                "pyqt": {
+                    "name": [
+                        "Resize",
+                        "リサイズ"
+                    ],
+                    "comment": [
+                        "Use the same size as what was used for training the model",
+                        "モデルを訓練された時の入力サイズと同様"
+                    ],
+                    "type": "SizeInput",
+                    "default": [
+                        224,
+                        224
+                    ]
+                }
+            }
+        },
+        "model_config": {
+            "pyqt": {
+                "name": [
+                    "Model Configuration",
+                    "モデル設定"
+                ],
+                "comment": [
+                    "Configurations for the model used",
+                    "モデルに関する各種設定"
+                ],
+                "type": "Dict"
+            },
+            "model": {
+                "pyqt": {
+                    "name": [
+                        "Model Architecture",
+                        "モデル構造"
+                    ],
+                    "comment": [
+                        "Same module as .pt model (Only for .pt models)",
+                        ".pt モデルを訓練された時と同様(.pt モデル専用)"
+                    ],
+                    "type": "Dropdown",
+                    "choices": [
+                        "vgg16",
+                        "vgg19",
+                        "resnet18",
+                        "resnet34",
+                        "resnet50",
+                        "resnet101",
+                        "resnet152",
+                        "efficientnet_b0",
+                        "efficientnet_b1",
+                        "efficientnet_b2",
+                        "efficientnet_b3",
+                        "efficientnet_b4",
+                        "efficientnet_b5",
+                        "efficientnet_b6",
+                        "efficientnet_b7"
+                    ],
+                    "default": "resnet18"
+                }
+            },
+            "classes_num": {
+                "pyqt": {
+                    "name": [
+                        "Number of Classes",
+                        "クラス数"
+                    ],
+                    "comment": [
+                        "Same number of classes used for .pt model (Only for .pt model)",
+                        ".pt モデルを訓練された時と同様(.pt モデル専用)"
+                    ],
+                    "type": "IntInput",
+                    "default": 2
+                }
+            },
+            "use_official_model": {
+                "pyqt": {
+                    "name": [
+                        "Use Official Model",
+                        "オフィシャルモデルを使う？"
+                    ],
+                    "comment": [
+                        "Set to Unchecked/false",
+                        "絶対 False/チェックしない"
+                    ],
+                    "type": "Boolean",
+                    "default": false
+                }
+            },
+            "pretrained": {
+                "pyqt": {
+                    "name": [
+                        "Pretrained Model",
+                        "事前学習済みモデル"
+                    ],
+                    "comment": [
+                        "Set to Checked/true",
+                        "絶対 True/チェックする"
+                    ],
+                    "type": "Boolean",
+                    "default": true
+                }
+            },
+            "pretrained_model": {
+                "pyqt": {
+                    "name": [
+                        "Pretrained Model Path",
+                        "事前学習済みモデル"
+                    ],
+                    "comment": [
+                        "Path of the model for testing",
+                        "検証したいモデルのパス"
+                    ],
+                    "type": "Path",
+                    "target": "File",
+                    "default": ""
+                }
+            },
+            "old_version": {
+                "pyqt": {
+                    "name": [
+                        "Old Version?",
+                        "Old Version?"
+                    ],
+                    "comment": [
+                        "Whether to use old version of model (ImageNet pretrained model as-is)",
+                        "古いバージョンのモデルを使うかどうか (ImageNetの学習済みモデルをそのまま使う)"
+                    ],
+                    "type": "Boolean",
+                    "default": false
+                }
+            }
+        },
+        "device": {
+            "pyqt": {
+                "name": [
+                    "Device for testing",
+                    "テストデバイス"
+                ],
+                "comment": [
+                    "Set which device to do process",
+                    "使いたいデバイス"
+                ],
+                "type": "Dropdown",
+                "choices": [
+                    "cuda:0",
+                    "cpu"
+                ],
+                "default": "cpu"
+            }
+        },
+        "target": {
+            "pyqt": {
+                "name": [
+                    "Target Class",
+                    "注目クラス"
+                ],
+                "comment": [
+                    "Index of the class of interest. Recall and Precision will be calculated based on this index",
+                    "注目したいクラスのインデックス. そのインデックスによるRecallとPrecisionを計算する"
+                ],
+                "type": "IntInput",
+                "default": 0
+            }
+        },
+        "wrong_image_save": {
+            "pyqt": {
+                "name": [
+                    "Save Wrong Images",
+                    "間違った画像を保存"
+                ],
+                "comment": [
+                    "Checked: Save wrong images of inference",
+                    "チェックする: 設置された target による正解と違う判断された画像を保存する"
+                ],
+                "type": "Boolean",
+                "default": true
+            }
+        },
+        "class_names": {
+            "pyqt": {
+                "name": [
+                    "Class Names",
+                    "クラスネーム"
+                ],
+                "comment": [
+                    "Name of the classes in the dataset to be tested",
+                    "テストデータセットのクラスネーム"
+                ],
+                "type": "ListInput",
+                "default": [
+                    "NG",
+                    "OK"
+                ]
+            }
+        }
+    },
+    "pruning_config": {
+        "pyqt": {
+            "name": [
+                "Pruning Configuration",
+                "プルーニング設定"
+            ],
+            "comment": [
+                "Configuration for the pruning section",
+                "プルーニングに関する各種設定"
+            ],
+            "type": "Dict"
+        },
+        "save_config": {
+            "pyqt": {
+                "name": [
+                    "Save Configuration",
+                    "保存設定"
+                ],
+                "comment": [
+                    "Configuration for saving pruned model",
+                    "プルーニングに関する保存設定"
+                ],
+                "type": "Dict"
+            },
+            "save_per_epoch": {
+                "pyqt": {
+                    "name": [
+                        "Save Per Epoch",
+                        "Save Per Epoch"
+                    ],
+                    "comment": [
+                        "Checked: Model will be saved after each epoch\nUnchecked: Only save the model of last epoch",
+                        "チェックするととモデルが`1epoch`ずつ保存される. チェックしないと最後の`epoch`のモデルだけ保存される."
+                    ],
+                    "type": "Boolean",
+                    "default": false
+                }
+            },
+            "save_onnx_per_epoch": {
+                "pyqt": {
+                    "name": [
+                        "Save .onnx model Per Epoch",
+                        "Save .onnx model Per Epoch"
+                    ],
+                    "comment": [
+                        "Checked: .onnx model will be saved after each epoch\nUnchecked: Only save the .onnx model of last epoch",
+                        "チェック入れると毎回のトレーニングで.onnxモデルが保存される"
+                    ],
+                    "type": "Boolean",
+                    "default": true
+                }
+            },
+            "save_path": {
+                "pyqt": {
+                    "name": [
+                        "Save Path",
+                        "保存場所"
+                    ],
+                    "comment": [
+                        "Location of saving the model",
+                        "モデルの保存場所である"
+                    ],
+                    "type": "Path",
+                    "target": "Folder",
+                    "default": "Output/checkpoints/"
+                }
+            },
+            "save_name": {
+                "pyqt": {
+                    "name": [
+                        "Save Name",
+                        "保存ネーム"
+                    ],
+                    "comment": [
+                        "Saving name of the model",
+                        "モデルの保存ネームである."
+                    ],
+                    "type": "StrInput",
+                    "default": "prune_test"
+                }
+            },
+            "input_shape": {
+                "pyqt": {
+                    "name": [
+                        "Input Shape",
+                        "インプットサイズ"
+                    ],
+                    "comment": [
+                        "The .onnx model's input shape. Should be the same as .pt model's input shape",
+                        ".onnxモデルのインプットサイズ。遷移学習で使う.ptモデルのインプットサイズと同様"
+                    ],
+                    "type": "ShpInput",
+                    "default": [
+                        1,
+                        3,
+                        224,
+                        224
+                    ]
+                }
+            }
+        },
+        "dataset_config": {
+            "pyqt": {
+                "name": [
+                    "Dataset Configuration",
+                    "データセット設定"
+                ],
+                "comment": [
+                    "Configurations for the dataset",
+                    "プルーニングに関するデータセット設定"
+                ],
+                "type": "Dict"
+            },
+            "train_data_config": {
+                "pyqt": {
+                    "name": [
+                        "Prune Train Data Configuration",
+                        "Pruning | トレーニングデータセット設定"
+                    ],
+                    "comment": [
+                        "Configurations for the train set for pruning",
+                        "プルーニングで使うデータセットの各種設定"
+                    ],
+                    "type": "Dict"
+                },
+                "data": {
+                    "pyqt": {
+                        "name": [
+                            "Data Location",
+                            "Pruning | 保存場所"
+                        ],
+                        "comment": [
+                            "Location of your train dataset for pruning",
+                            "Pruning | 教師データの保存場所"
+                        ],
+                        "type": "Path",
+                        "target": "Folder",
+                        "default": "datasets/Assy_CNN_2classes/train"
+                    }
+                },
+                "batch_size": {
+                    "pyqt": {
+                        "name": [
+                            "Batch Size",
+                            "Batch Size"
+                        ],
+                        "comment": [
+                            "Batch size for prune training",
+                            "Prune | 一回でデータから取る画像数, GPUのメモリーによる変換する. 数字が大きくなると学習スピードも速くなる"
+                        ],
+                        "type": "IntInput",
+                        "default": 32
+                    }
+                },
+                "shuffle": {
+                    "pyqt": {
+                        "name": [
+                            "Shuffle",
+                            "Shuffle"
+                        ],
+                        "comment": [
+                            "Checked: Images taken randomly",
+                            "チェックするとランダムでデータセットからデータを取る．チェックしないと順番で取"
+                        ],
+                        "type": "Boolean",
+                        "default": true
+                    }
+                },
+                "Resize": {
+                    "pyqt": {
+                        "name": [
+                            "Resize Input",
+                            "Resize Input"
+                        ],
+                        "comment": [
+                            "Resize the images to the specified size",
+                            "画像を指定されたサイズでResizeする"
+                        ],
+                        "type": "SizeInput",
+                        "default": [
+                            224,
+                            224
+                        ]
+                    }
+                },
+                "RandomRotation": {
+                    "pyqt": {
+                        "name": [
+                            "Random Rotation",
+                            "Random Rotation"
+                        ],
+                        "comment": [
+                            "Randomly rotate the captured image by x degrees",
+                            "取られた画像をランダムに`5`度でRotateする"
+                        ],
+                        "type": "IntInput",
+                        "default": 5
+                    }
+                },
+                "ColorJitter": {
+                    "pyqt": {
+                        "name": [
+                            "Color Jitter",
+                            "Color Jitter"
+                        ],
+                        "comment": [
+                            "Color Jitter configuration",
+                            "Color Jitterに関する各種設定"
+                        ],
+                        "type": "Dict"
+                    },
+                    "brightness": {
+                        "pyqt": {
+                            "name": [
+                                "Brightness",
+                                "輝度調整"
+                            ],
+                            "comment": [
+                                "Randomly converts the taken image to (100 +- (x * 100))% brightness of the original image",
+                                "画像の輝度をランダムに元画像の1 +- 30%に変化する(70% ~ 130%)"
+                            ],
+                            "type": "FltInput",
+                            "default": 0.5
+                        }
+                    },
+                    "hue": {
+                        "pyqt": {
+                            "name": [
+                                "Hue",
+                                "色相調整"
+                            ],
+                            "comment": [
+                                "Randomly converts the taken image to (100 +- (x * 100))% hue of the original image",
+                                "画像の色相をランダムに元画像の1 +- 30%に変化する(70% ~ 130%)"
+                            ],
+                            "type": "FltInput",
+                            "default": 0.3
+                        }
+                    }
+                },
+                "RandomInvert": {
+                    "pyqt": {
+                        "name": [
+                            "Random Invert",
+                            "Random Invert"
+                        ],
+                        "comment": [
+                            "Randomly invert the color of the image",
+                            "チェックする: 画像をランダムにカラーリバーサルする"
+                        ],
+                        "type": "Boolean",
+                        "default": true
+                    }
+                },
+                "RandomHorizontalFlip": {
+                    "pyqt": {
+                        "name": [
+                            "Random Horizontal Flip",
+                            "Random Horizontal Flip"
+                        ],
+                        "comment": [
+                            "Randomly flip the image horizontally",
+                            "画像をランダムに左右フリップする"
+                        ],
+                        "type": "Boolean",
+                        "default": true
+                    }
+                },
+                "RandomVerticalFlip": {
+                    "pyqt": {
+                        "name": [
+                            "Random Vertical Flip",
+                            "Random Vertical Flip"
+                        ],
+                        "comment": [
+                            "Randomly flip the image vertically",
+                            "チェックする: 画像をランダムに上下フリップす"
+                        ],
+                        "type": "Boolean",
+                        "default": true
+                    }
+                }
+            },
+            "val_data_config": {
+                "pyqt": {
+                    "name": [
+                        "Validation Data Configuration",
+                        "Pruning | バリデーションデータ設定"
+                    ],
+                    "comment": [
+                        "Configuration for the validation dataset",
+                        "Pruning | バリデーションデータに関する各種設定"
+                    ],
+                    "type": "Dict"
+                },
+                "data": {
+                    "pyqt": {
+                        "name": [
+                            "Data Location",
+                            "Pruning | データパス"
+                        ],
+                        "comment": [
+                            "Location of the Validation Data",
+                            "Pruning | バリデーションデータ"
+                        ],
+                        "type": "Path",
+                        "target": "Folder",
+                        "default": "datasets/Assy_CNN_2classes/val"
+                    }
+                },
+                "batch_size": {
+                    "pyqt": {
+                        "name": [
+                            "Batch Size",
+                            "Batch Size"
+                        ],
+                        "comment": [
+                            "Batch size for validating",
+                            "Pruning | 一回でデータから取る画像数, GPUのメモリーによる変換する. 数字が大きくなると学習スピードも速くなる"
+                        ],
+                        "type": "IntInput",
+                        "default": 32
+                    }
+                },
+                "shuffle": {
+                    "pyqt": {
+                        "name": [
+                            "Shuffle",
+                            "Shuffle"
+                        ],
+                        "comment": [
+                            "Checked: Validation image taken randomly",
+                            "チェックするとランダムでデータセットからデータを取る．チェックしないと順番で取"
+                        ],
+                        "type": "Boolean",
+                        "default": false
+                    }
+                }
+            }
+        },
+        "model_config": {
+            "pyqt": {
+                "name": [
+                    "Model Configuration",
+                    "Pruning | モデル設定"
+                ],
+                "comment": [
+                    "Configurations for the model used",
+                    "Pruning | モデルに関する各種設定"
+                ],
+                "type": "Dict"
+            },
+            "model": {
+                "pyqt": {
+                    "name": [
+                        "Model Architecture",
+                        "Pruning | モデル構造"
+                    ],
+                    "comment": [
+                        "Same module as .pt model (Only for .pt models)",
+                        "入力モデルと同じ構造を選択すること"
+                    ],
+                    "type": "Dropdown",
+                    "choices": [
+                        "vgg16",
+                        "vgg19",
+                        "resnet18",
+                        "resnet34",
+                        "resnet50",
+                        "resnet101",
+                        "resnet152",
+                        "efficientnet_b0",
+                        "efficientnet_b1",
+                        "efficientnet_b2",
+                        "efficientnet_b3",
+                        "efficientnet_b4",
+                        "efficientnet_b5",
+                        "efficientnet_b6",
+                        "efficientnet_b7"
+                    ],
+                    "default": "resnet18"
+                }
+            },
+            "classes_num": {
+                "pyqt": {
+                    "name": [
+                        "Number of Classes",
+                        "クラス数"
+                    ],
+                    "comment": [
+                        "Same number of classes used for .pt model (Only for .pt model)",
+                        "入力モデルと同じクラス数を設定すること"
+                    ],
+                    "type": "IntInput",
+                    "default": 2
+                }
+            },
+            "use_official_model": {
+                "pyqt": {
+                    "name": [
+                        "Use Official Model",
+                        "オフィシャルモデルを使う？"
+                    ],
+                    "comment": [
+                        "Set to Unchecked/false",
+                        "普段は Unchecked/false"
+                    ],
+                    "type": "Boolean",
+                    "default": false
+                }
+            },
+            "pretrained": {
+                "pyqt": {
+                    "name": [
+                        "Pretrained Model",
+                        "事前学習済みモデル"
+                    ],
+                    "comment": [
+                        "Set to Checked/true",
+                        "普段は Checked/true"
+                    ],
+                    "type": "Boolean",
+                    "default": true
+                }
+            },
+            "pretrained_model": {
+                "pyqt": {
+                    "name": [
+                        "Pretrained Model Path",
+                        "事前学習済みモデルのパス"
+                    ],
+                    "comment": [
+                        "Path of the model for pruning",
+                        "プルーニングで使う事前学習済みモデルのパス"
+                    ],
+                    "type": "Path",
+                    "target": "File",
+                    "default": ""
+                }
+            },
+            "old_version": {
+                "pyqt": {
+                    "name": [
+                        "Old Version?",
+                        "Old Version?"
+                    ],
+                    "comment": [
+                        "Whether to use old version of model (ImageNet pretrained model as-is)",
+                        "古いバージョンのモデルを使うかどうか (ImageNetの学習済みモデルをそのまま使う)"
+                    ],
+                    "type": "Boolean",
+                    "default": false
+                }
+            }
+        },
+        "Hyperparams_config": {
+            "pyqt": {
+                "name": [
+                    "Hyperparameters Configuration",
+                    "Hyperparameters Configuration"
+                ],
+                "comment": [
+                    "Configurations used for hyperparameters",
+                    "Configurations used for hyperparameters"
+                ],
+                "type": "Dict"
+            },
+            "epochs": {
+                "pyqt": {
+                    "name": [
+                        "Epochs",
+                        "Epochs"
+                    ],
+                    "comment": [
+                        "Iterations of training",
+                        "学習回数"
+                    ],
+                    "type": "IntInput",
+                    "default": 300
+                }
+            },
+            "criterion": {
+                "pyqt": {
+                    "name": [
+                        "Criterion",
+                        "Criterion"
+                    ],
+                    "comment": [
+                        "Loss Function to use for training model",
+                        "損失関数"
+                    ],
+                    "type": "Dropdown",
+                    "choices": [
+                        "CrossEntropyLoss",
+                        "BCEWithLogitsLoss",
+                        "BCELoss",
+                        "NLLLoss"
+                    ],
+                    "default": "CrossEntropyLoss"
+                }
+            },
+            "optimizer": {
+                "pyqt": {
+                    "name": [
+                        "Optimizer",
+                        "Optimizer"
+                    ],
+                    "comment": [
+                        "Optimizer used to reduce loss of training and model feedback",
+                        "学習損失を抑えるために，フィードバック最適化手法である"
+                    ],
+                    "type": "Dropdown",
+                    "choices": [
+                        "SGD",
+                        "Adam",
+                        "AdamW",
+                        "RMSprop",
+                        "Adagrad"
+                    ],
+                    "default": "SGD"
+                }
+            },
+            "learning_rate": {
+                "pyqt": {
+                    "name": [
+                        "Learning Rate",
+                        "Learning Rate"
+                    ],
+                    "comment": [
+                        "Determines how small or large the update applied to the model's parameters. Smaller learning rates result in finer updates, while larger learning rates lead to more significant updates",
+                        "学習間隔である. 小さくなるほど学習が細かくなる"
+                    ],
+                    "type": "FltInput",
+                    "default": 0.01
+                }
+            },
+            "momentum": {
+                "pyqt": {
+                    "name": [
+                        "SGD Momentum",
+                        "SGD Momentum"
+                    ],
+                    "comment": [
+                        "SGD Specific parameter. Momentum optimizes the parameters as if a ball rolling on the function's surface",
+                        "SGD 専用パラメータ: 関数平面上をボールが転がるように最適化されます"
+                    ],
+                    "type": "FltInput",
+                    "default": 0.9
+                }
+            },
+            "target": {
+                "pyqt": {
+                    "name": [
+                        "Target Class",
+                        "注目クラス"
+                    ],
+                    "comment": [
+                        "Index of the class of interest. Recall and Precision will be calculated based on this index",
+                        "注目したいクラスのインデックス. そのインデックスによるRecallとPrecisionを計算する"
+                    ],
+                    "type": "IntInput",
+                    "default": 0
+                }
+            }
+        },
+        "pruner_config": {
+            "pyqt": {
+                "name": [
+                    "Pruner Configuration",
+                    "プルーナ設定"
+                ],
+                "comment": [
+                    "Configurations for pruner",
+                    "プルーナに関する各種設定"
+                ],
+                "type": "Dict"
+            },
+            "input_shape": {
+                "pyqt": {
+                    "name": [
+                        "Input Shape",
+                        "Input Shape"
+                    ],
+                    "comment": [
+                        "Dummy input for calculating the feautre importance. It should be the same as the input shape of the saved model",
+                        "Dummy input for calculating the feautre importance. It should be the same as the input shape of the saved model"
+                    ],
+                    "type": "ShpInput",
+                    "default": [
+                        1,
+                        3,
+                        224,
+                        224
+                    ]
+                }
+            },
+            "features_importance": {
+                "pyqt": {
+                    "name": [
+                        "Features Importance",
+                        "Features Importance"
+                    ],
+                    "comment": [
+                        "The method to calculate the model's features importance.",
+                        "The method to calculate the model's features importance."
+                    ],
+                    "type": "Dropdown",
+                    "choices": [
+                        "TaylorImportance",
+                        "MagnitudeImportance",
+                        "BNScaleImportance",
+                        "RandomImportance"
+                    ],
+                    "default": "MagnitudeImportance"
+                }
+            },
+            "pruner": {
+                "pyqt": {
+                    "name": [
+                        "Pruner",
+                        "プルーナ"
+                    ],
+                    "comment": [
+                        "Chosen pruner must be related to chosen features importance",
+                        "Chosen pruner must be related to chosen features importance"
+                    ],
+                    "type": "Dropdown",
+                    "choices": [
+                        "MagnitudePruner",
+                        "TaylorPruner"
+                    ],
+                    "default": "MagnitudePruner"
+                }
+            },
+            "iterative_steps": {
+                "pyqt": {
+                    "name": [
+                        "Iterative Steps",
+                        "前進歩数"
+                    ],
+                    "comment": [
+                        "The iteration steps you used to achieve the desired separation",
+                        "目標separationまで到達する歩数"
+                    ],
+                    "type": "IntInput",
+                    "default": 1
+                }
+            },
+            "channel_sparsity": {
+                "pyqt": {
+                    "name": [
+                        "Channel Sparsity",
+                        "Channel Sparsity"
+                    ],
+                    "comment": [
+                        "The desired separation",
+                        "目標separation(0.1 ~ 0.9)"
+                    ],
+                    "type": "FltInput",
+                    "default": 0.8
+                }
+            }
+        },
+        "device": {
+            "pyqt": {
+                "name": [
+                    "Device to Prune",
+                    "プルーニングデバイス"
+                ],
+                "comment": [
+                    "Set which device to do pruning",
+                    "使いたい設備"
+                ],
+                "type": "Dropdown",
+                "choices": [
+                    "cuda:0",
+                    "cpu"
+                ],
+                "default": "cuda:0"
+            }
+        }
+    },
+    "heatmapViewer": {
+        "pyqt": {
+            "name": [
+                "Heatmap Viewer",
+                "Heatmap Viewer"
+            ],
+            "comment": [
+                "Check heatmap on GUI",
+                "画像のHeatmapを確認する"
+            ],
+            "type": "Dict"
+        },
+        "model_path": {
+            "pyqt": {
+                "name": [
+                    "Model Path",
+                    "Model Path"
+                ],
+                "comment": [
+                    "Path to the model to be viewed",
+                    "Heatmapを生成するモデルを選択する"
+                ],
+                "type": "Path",
+                "target": "File",
+                "default": ""
+            }
+        },
+        "image_path": {
+            "pyqt": {
+                "name": [
+                    "Image Folder Path",
+                    "Image Folder Path"
+                ],
+                "comment": [
+                    "Path to the image to be viewed",
+                    "画像のフォルダ"
+                ],
+                "type": "Path",
+                "target": "Folder",
+                "default": ""
+            }
+        },
+        "cam": {
+            "pyqt": {
+                "name": [
+                    "CAM",
+                    "CAM"
+                ],
+                "comment": [
+                    "The way to generate heatmap",
+                    "Heatmapを生成する手法を選択する"
+                ],
+                "type": "Dropdown",
+                "choices": [
+                    "CAM",
+                    "GradCAM",
+                    "LayerCAM",
+                    "ScoreCAM",
+                    "XGradCAM",
+                    "GradCAMpp",
+                    "SmoothGradCAMpp"
+                ],
+                "default": "GradCAM"
+            }
+        },
+        "classes_num": {
+            "pyqt": {
+                "name": [
+                    "Classes Number",
+                    "クラス数"
+                ],
+                "comment": [
+                    "The number of classes",
+                    "クラス数"
+                ],
+                "type": "IntInput",
+                "default": 1000
+            }
+        },
+        "old_version": {
+            "pyqt": {
+                "name": [
+                    "Old Version",
+                    "Old Version"
+                ],
+                "comment": [
+                    "Whether to use old version of model (ImageNet pretrained model as-is)",
+                    "Whether to use old version of model (ImageNet pretrained model as-is)"
+                ],
+                "type": "Boolean",
+                "default": false
+            }
+        },
+        "input_shape": {
+            "pyqt": {
+                "name": [
+                    "Input Shape",
+                    "Input Shape"
+                ],
+                "comment": [
+                    "Input shape of the model",
+                    "モデルの入力サイズ"
+                ],
+                "type": "ShpInput",
+                "default": [224, 224]
+            }
+        }
+    },
+    "exportInferenceModel": {
+        "pyqt": {
+            "name": [
+                "Export Inference Model",
+                "Export Inference Model"
+            ],
+            "comment": [
+                "Export the model for inference",
+                "推論用にモデルをエクスポートする"
+            ],
+            "type": "Dict"
+        },
+        "input_model_config": {
+            "pyqt": {
+                "name": [
+                    "Model Configuration",
+                    "モデル設定"
+                ],
+                "comment": [
+                    "Configurations for model",
+                    "モデルに関する各種設定"
+                ],
+                "type": "Dict"
+            },
+            "model_version": {
+                "pyqt": {
+                    "name": [
+                        "Model Version",
+                        "モデルバージョン"
+                    ],
+                    "comment": [
+                        "If using general model, please select state_dict, if using version, please select DLTool",
+                        "普通な.ptモデルを使う場合はstate_dictを選択してください。このパッケージで保存されたモデルを使う場合はDLToolを選択してください"
+                    ],
+                    "type": "Dropdown",
+                    "choices": [
+                        "state_dict",
+                        "DLTool"
+                    ],
+                    "default": "DLTool"
+                }
+            },
+            "input_model_path": {
+                "pyqt": {
+                    "name": [
+                        "Input Model Path",
+                        "入力モデルパス"
+                    ],
+                    "comment": [
+                        "Path to input model",
+                        "入力モデルのパス"
+                    ],
+                    "type": "Path",
+                    "target": "File",
+                    "default": ""
+                }
+            },
+            "model": {
+                "pyqt": {
+                    "name": [
+                        "Model Architecture",
+                        "Pruning | モデル構造"
+                    ],
+                    "comment": [
+                        "Same module as .pt model (Only for .pt models)",
+                        "入力モデルと同じ構造を選択すること"
+                    ],
+                    "type": "Dropdown",
+                    "choices": [
+                        "vgg16",
+                        "vgg19",
+                        "resnet18",
+                        "resnet34",
+                        "resnet50",
+                        "resnet101",
+                        "resnet152",
+                        "efficientnet_b0",
+                        "efficientnet_b1",
+                        "efficientnet_b2",
+                        "efficientnet_b3",
+                        "efficientnet_b4",
+                        "efficientnet_b5",
+                        "efficientnet_b6",
+                        "efficientnet_b7"
+                    ],
+                    "default": "resnet18"
+                }
+            },
+            "classes_num": {
+                "pyqt": {
+                    "name": [
+                        "Number of Classes",
+                        "クラス数"
+                    ],
+                    "comment": [
+                        "Same number of classes used for .pt model (Only for .pt model)",
+                        "入力モデルと同じクラス数を設定すること"
+                    ],
+                    "type": "IntInput",
+                    "default": 2
+                }
+            }
+        },
+        "output_model_config": {
+            "pyqt": {
+                "name": [
+                    "Output Model Configuration",
+                    "出力モデル設定"
+                ],
+                "comment": [
+                    "Configurations for output model",
+                    "出力モデルに関する各種設定"
+                ],
+                "type": "Dict"
+            },
+            "output_model_path": {
+                "pyqt": {
+                    "name": [
+                        "Output ModelPath",
+                        "出力モデルパス"
+                    ],
+                    "comment": [
+                        "Path to output model",
+                        "出力モデルのパス"
+                    ],
+                    "type": "Path",
+                    "target": "File",
+                    "default": ""
+                }
+            },
+            "input_shape": {
+                "pyqt": {
+                    "name": [
+                        "Input Shape",
+                        "入力画像サイズ"
+                    ],
+                    "comment": [
+                        "Input shape of model",
+                        "モデルに入力する画像のサイズ"
+                    ],
+                    "type": "ShpInput",
+                    "default": [
+                        1,
+                        3,
+                        224,
+                        224
+                    ]
+                }
+            }
+        }
+    }
+}
