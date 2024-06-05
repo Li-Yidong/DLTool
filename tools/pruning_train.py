@@ -192,11 +192,11 @@ def batch_gd(model, device, criterion, optimizer, train_loader, val_loader, epoc
 
         # save best model
         if f1_score > best_f1:
-            torch.save(model.state_dict(), f"{config['save_config']['save_path']}/best_checkpoint.pt")
+            torch.save(model.state_dict(), "Output/checkpoints/best_checkpoint.pt")
             best_f1 = f1_score
         elif f1_score == best_f1:
             if avg_loss < best_loss:
-                torch.save(model.state_dict(), f"{config['save_config']['save_path']}/best_checkpoint.pt")
+                torch.save(model.state_dict(), "Output/checkpoints/best_checkpoint.pt")
                 best_loss = avg_loss
 
     # save model

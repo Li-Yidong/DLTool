@@ -93,7 +93,11 @@ def pruning(config):
     # load model
     model_config = config['model_config']
     print(model_config)
-    model = utils.model_loader(model_config)
+    checkpoint = utils.checkpoint_loader(model_config)
+    model = checkpoint['model']
+    model.load_state_dict(checkpoint['state_dict'])
+    model.to('cpu')
+    print(model)
 
     # load dataset
     data_config = config['dataset_config']

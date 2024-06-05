@@ -1,0 +1,18 @@
+# Files
+*.out
+*.pyc
+
+# Folders
+.idea/
+img/
+backup/
+models/
+Output/
+configs/
+datasets/
+notebooks/
+checkpoints/
+*/__pycache__/*
+config.ini
+.idea/HanjuCNN.iml
+.idea/misc.xml
