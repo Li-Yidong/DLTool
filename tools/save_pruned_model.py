@@ -9,8 +9,17 @@ import torch.nn as nn
 import torch_pruning as tp
 
 
-model = models.get_model(name="resnet18", pretrained=False)
-model.load_state_dict(torch.load("../checkpoints/resnet18-5c106cde.pth"))
+ori_model_arc = "resnet152"
+pruned_model_path = "Z:/work_files/YuTaKa_assy/CpythonTest/CpythonTest/CpythonTest/anomaly_classify_upper_20240718.pt"
+pruning_rate = 0.8
+class_num = 2
+save_path = "Z:/work_files/YuTaKa_assy/CpythonTest/CpythonTest/CpythonTest/anomaly_classify_upper_20240718_checkpoint.pt"
+
+model = models.get_model(name=ori_model_arc, pretrained=True)
+
+n_feats: int = model.fc.in_features
+model.fc = nn.Linear(n_feats, class_num)
+
 model.to("cpu")
 
 example_input = torch.randn([1, 3, 224, 224])
@@ -30,17 +39,19 @@ pruner = pruner_class(
     example_input,
     importance=imp,
     iterative_steps=1,
-    ch_sparsity=0.1,
+    ch_sparsity=pruning_rate,
     ignored_layers=ignored_layers
 )
-        
+
 pruner.step()
+
+model.load_state_dict(torch.load(pruned_model_path))
 
 model.eval()
 
 print(model)
 
 checkPoint = {'model': model, 
-              'state_dick': model.state_dict()}
+              'state_dict': model.state_dict()}
 
-torch.save(checkPoint, "../checkpoints/resnet18_pruned_01.pth")
+torch.save(checkPoint, save_path)
